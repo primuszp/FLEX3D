@@ -1,21 +1,19 @@
-# C-FLEX2D
-2D Axisymmetric Finite Element Methods (FEM) Program for Flexible Pavement Analysis.
+# FLEX3D
+3D Finite Element Methods (FEM) Program for Flexible Pavement Analysis.
 
-The program is developed by Haohang Huang and Jiayi Luo @ University of Illinois at Urbana-Champaign (UIUC). The advisor is [Professor Erol Tutumluer](https://cee.illinois.edu/directory/profile/tutumlue).
+The program is developed by Haohang Huang @ University of Illinois at Urbana-Champaign (UIUC).
 
-The development of this software program is sponsored by [Engineer Research and Development Center (ERDC)](https://www.erdc.usace.army.mil), United States Army Corps of Engineers (USACE). The ERDC project manager is [Jeb S. Tingle](https://www.erdc.usace.army.mil/Media/Images/igphoto/2002117275/).
+The program name represents Flexible pavements ("**FLEX**").
 
-The program name represents Corps of Engineers ("**C**") and Flexible pavements ("**FLEX**").
-
-The code is in C++ and Python. 2D FEM engine is written in C++. Other related modules, extensions, and Graphical User Interface (GUI) are written in Python.
+The code is in C++.
 
 ## Installation Guide
 Clone the repository:
-`git clone https://github.com/symphonylyh/C-FLEX2D`
+`git clone https://github.com/symphonylyh/FLEX3D`
 
 Repo strcuture:
 ```bash
-C-FLEX2D
+FLEX3D
 ├── CMakeLists.txt
 ├── FEM
 │   └── Eigen
@@ -36,11 +34,11 @@ For Windows platform, it is recommended to compile the program by Microsoft Visu
 
 4. Left Pane--Right click on project name "build"--Properties--Right click on the project name-Properties-C/C++-Precompiled headers-Precompiles header--Not using precompile header
 
-5. Right click project--Properties--General--Target Name--Change to the name you like, e.g. `main2d`
+5. Right click project--Properties--General--Target Name--Change to the name you like, e.g. `main3d`
 
 6. Right click project--Build. You'll see some complaints from the compiler, but it doesn't matter.
 
-The executable `main2d` will be under `./build/x64/Release/`
+The executable `main3d` will be under `./build/x64/Release/`
 
 ### MacOS and Linux
 For Unix systems, it is much easier to compile. CMake and Xcode command line tools should be installed. Then simply run the bash script

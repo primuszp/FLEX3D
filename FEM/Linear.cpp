@@ -20,8 +20,23 @@ Linear::~Linear()
 
 void Linear::solve()
 {
+	auto start = std::chrono::high_resolution_clock::now();
+	auto finish = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> elapsed = finish - start; // in second
+
     applyForce();
+
+	finish = std::chrono::high_resolution_clock::now();
+	elapsed = finish - start; // in second
+	std::cout << "apply: " << elapsed.count() << " s" << std::endl;
+	start = std::chrono::high_resolution_clock::now();
+
     assembleStiffness();
+
+	finish = std::chrono::high_resolution_clock::now();
+	elapsed = finish - start; // in second
+	std::cout << "assemble: " << elapsed.count() << " s" << std::endl;
+	start = std::chrono::high_resolution_clock::now();
 
     // Option1: SimplicialLDLT <SparseMatrix<double> > solver;
     // Option2: ConjugateGradient <SparseMatrix<double> > solver;
@@ -35,9 +50,24 @@ void Linear::solve()
     solver.compute(globalStiffness);
     nodalDisp = solver.solve(nodalForce);
 
+	finish = std::chrono::high_resolution_clock::now();
+	elapsed = finish - start; // in second
+	std::cout << "solve: " << elapsed.count() << " s" << std::endl;
+	start = std::chrono::high_resolution_clock::now();
+
     // Compute strain and stress and accumulate at each node
     computeStrainAndStress();
 
+	finish = std::chrono::high_resolution_clock::now();
+	elapsed = finish - start; // in second
+	std::cout << "compute stress: " << elapsed.count() << " s" << std::endl;
+	start = std::chrono::high_resolution_clock::now();
+
     // Average strain and stress at each node
     averageStrainAndStress();
+
+	finish = std::chrono::high_resolution_clock::now();
+	elapsed = finish - start; // in second
+	std::cout << "avg stress: " << elapsed.count() << " s" << std::endl;
+	start = std::chrono::high_resolution_clock::now();
 }

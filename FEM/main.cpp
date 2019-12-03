@@ -83,11 +83,11 @@ bool xcode = false;
 auto finish = std::chrono::high_resolution_clock::now();
 auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
 // std::chrono::duration<double> elapsed = finish - start; // in second
-std::cout << "Elapsed time total: " << elapsed.count() << " ms" << std::endl;
+// std::cout << "Elapsed time total: " << elapsed.count() << " ms" << std::endl;
 
-std::cout << "-----------------------------------------------------";
-std::cout << std::endl;
-std::cout << "Mission Completed! Thanks for using our program!" << std::endl;
+// std::cout << "-----------------------------------------------------";
+// std::cout << std::endl;
+// std::cout << "Mission Completed! Thanks for using our program!" << std::endl;
 
     return 0;
 }

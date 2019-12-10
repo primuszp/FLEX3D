@@ -26,8 +26,6 @@ int main(int argc, char const *argv[]) {
     //--------------------------------------------------------------------------
 
 auto start = std::chrono::high_resolution_clock::now();
-auto finish = std::chrono::high_resolution_clock::now();
-std::chrono::duration<double> elapsed = finish - start; // in second
 
 bool xcode = false;
     if (!xcode) {
@@ -38,16 +36,16 @@ bool xcode = false;
             std::string outVTKName = inFile + ".vtk";
 
             Mesh mesh = Mesh(inFileName); // on stack, make sure lifetime of 'mesh' is longer than Analysis case
-			finish = std::chrono::high_resolution_clock::now();
-			elapsed = finish - start; // in second
-			std::cout << "read mesh: " << elapsed.count() << " s" << std::endl;
-			start = std::chrono::high_resolution_clock::now();
 
             Analysis* caseType; // 'case' is a reserved keyword for switch(), so can't declare a variable with name "case"
-            if (mesh.nonlinear)
-                caseType = new Nonlinear(mesh);
-            else
-                caseType = new Linear(mesh);
+			if (mesh.nonlinear) {
+				std::cout << "> Nonlinear analysis scheme" << std::endl;
+				caseType = new Nonlinear(mesh);
+			}
+			else {
+				std::cout << "> Linear analysis scheme" << std::endl;
+				caseType = new Linear(mesh);
+			}
 
             caseType->solve();
             // caseType->printDisp();
